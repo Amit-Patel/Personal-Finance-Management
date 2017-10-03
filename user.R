@@ -7,6 +7,7 @@ test_title="Dashboard Visualization of Critical Situation Monitoring"
 test_side=list(sidebarMenu(
   menuItem("Expenses", tabName = "dashboard", icon = icon("dashboard")),
   menuItem("Proportions", tabName = "secondary", icon = icon("secondary")),
+  menuItem("Enter Transactions", tabName = "tertiary", icon = icon("tertiary")),
   menuItem("Logout", tabName = "logout", icon = icon("logout"))
   ))
 
@@ -20,6 +21,19 @@ test_main=list(
             actionButton('Logout', 'Logout')
             )
     ),
+      
+    tabItem(tabName = "tertiary",
+              column(width = 10,
+                     offset = 2,
+                     selectInput("trans_type", "Transaction type", c("FOOD","BILLS","TRANSPORT","GROCERY","BUSINESS","PERSONAL","LOAN")),
+                     textInput("amount","Amount"),
+                     textInput("date","Date"),
+                     textInput("location","Location"),
+                     selectInput("status","Status",c("Completed","Pending")),
+                     textInput("lender","Lender"),
+                     textInput("borrower","Borrower")
+              )
+      ),
     tabItem(tabName = "dashboard",
             column(width = 10,#class = "well",
             offset = 1,
